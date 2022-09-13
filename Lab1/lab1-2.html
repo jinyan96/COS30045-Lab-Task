@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="description"	content="Data Visualisation Exercise 1"/>
+	<meta name="keywords"		  content="HTML, CSS"/>
+	<meta name="author"			  content="Your name here"/>
+
+	<title>Task 1.2 Fundamentals Javascript</title>
+	<!--Insert description of exercise  -->
+
+<!-- CSS (change the style) -->
+	<style>
+		body {background-color: powderblue;}
+		h1   {color: blue;}
+		h2   {color: darkcyan;}
+		p    {color: darkblue;}
+		footer {background-color: lightgray;}
+		figure { 	
+    	display: block; 	
+    	width: "450";
+    	height: "400";
+		} 
+		figcaption { 	
+    	float: center; 	
+    	text-align: center;
+    	font-style: italic;
+    	padding: 4px; 
+		}
+		.button{
+			background-color: darkgray;
+  		border: 1;
+  		color: white;
+  		text-align: center;
+  		text-decoration: none;
+  		display: inline-block;
+  		font-size: 16px;
+  		margin: 4px 2px;
+  		cursor: pointer;
+		}
+		.button2{
+			background-color: grey;
+  		border: 1;
+  		color: white;
+  		text-align: center;
+  		text-decoration: none;
+  		display: inline-block;
+  		font-size: 16px;
+  		margin: 4px 2px;
+  		cursor: pointer;
+		}
+		.button3{
+			background-color: brown;
+  		border: 1;
+  		color: white;
+  		text-align: center;
+  		text-decoration: none;
+  		display: inline-block;
+  		font-size: 16px;
+  		margin: 4px 2px;
+  		cursor: pointer;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<h1>Pets and the Pandemic</h1>
+	<h2>Author of Pets and the Pandemic</h2>
+	<p>A report from <b>Animal Medicines Australia (AMA)</b> has found that many Australians took the opportunity to introduce a pet into their household during the pandemic. Their survey indicated that there was a significant increase in the percent of households taking in a new dog, fish or bird. Their research also indicated that pets had a number of positive influences on their lives such as: 
+	companionship better mental health joy and happiness. With the increase in pet ownership the AMA are encouraging policy makers to consider the needs of companion animals and their owners when considering rental, strata and body corporate regulations are well as accepting animals in public places and transport.
+	</p>
+
+	<p>Some popular pets by Australian are:
+		<ul>
+		<li><i>Lion</i></li>
+		<li><b>Kangaroo</b></li>
+		<li>Koala</li>
+		</ul>
+	</p>
+
+	<table>
+		<tr>
+			<th><input type="button" class="button" value="2019" onclick="pic(this)" /></th>
+			<th><input type="button" class="button2" value="2021" onclick="pic(this)" /></th>
+			<th><input type="button" class="button3" value="Both" onclick="pic(this)" /></th>
+		</tr>
+	</table>
+
+<!-- Condition on the output for image and figcaption  -->
+	<script>
+		function pic(param) {
+			if (param.value=='2019') {
+   			document.getElementById("png").src="in2019.png";
+   			document.getElementById("png").alt="2019 bar chart";
+   			document.getElementById("figcapt").innerHTML="Fig 1: Percent of most popular pets owned by Australians in 2019"
+   		} else if(param.value=='2021'){
+   			document.getElementById("png").src = "in2021.png";
+   			document.getElementById("png").alt="2021 bar chart";
+   			document.getElementById("figcapt").innerHTML="Fig 1: Percent of most popular pets owned by Australians in 2021"
+  		} else if (param.value=='Both'){
+  			document.getElementById("png").src = "2019 & 2021.png";
+   			document.getElementById("png").alt="2019 & 2021 bar chart";
+  			document.getElementById("figcapt").innerHTML="Fig 1: Percent of most popular pets owned by Australians in 2019 and 2021"
+  		}
+  	}
+	</script>
+
+	<figure>
+		<center><img id="png"  /><br></center>
+	<!-- 	figcaption tag acts as a tag -->
+		<figcaption id="figcapt"></figcaption>	
+	</figure>
+
+<!-- Hyperlink -->
+<br>
+<a href="lab1-1.html">Home</a>
+<a href="lab1-3.html">Drawing shapes with SVG</a>
+<a href="lab1-4.html">Drawing bar chart with SVG</a>
+
+<!-- Footer -->
+<footer>COS30045 Data Visualisation</footer>
+
+</body>
+</html>
