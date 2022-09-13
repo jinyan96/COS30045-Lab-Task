@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="description"	content="Data Visualisation Exercise "/>
+	<meta name="keywords"		  content="HTML, CSS, D3"/>
+	<meta name="author"			  content="Lee Jin Yan"/>
+
+	<title>Task 2.1 D3 Data Binding</title>
+
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+
+<body>
+
+	<h1>D3 Data Binding</h1>
+	<h2>Author: Lee Jin Yan</h2>
+
+	<script>
+		// Data
+		var dataset=[14,5,26,23,9];
+		// Dynamic Data with D3
+		d3.select("body").selectAll("p")
+			.data(dataset)
+			.enter()
+			.append("p")
+			.style("fill","black")
+			.style("color",function(d,i){
+				return d>10?"#ff0000":"#000";
+			})
+			.text(function(d,i){
+				if(d>10){
+					result="Warning: Joe watched "+d+" cat videos today";
+					}
+				else {
+					result="Joe watched "+d+" cat videos today";
+				}
+				return result;
+			});
+
+	</script>
+
+	<br>
+	<br>
+	<footer style="color: grey">COS30045 Data Visualisation<br> Joe Bloggs</footer>
+
+</body>
+</html>

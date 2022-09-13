@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="description"	content="Data Visualisation Exercise "/>
+	<meta name="keywords"		  content="HTML, CSS, D3"/>
+	<meta name="author"			  content="Lee Jin Yan"/>
+
+	<title>Task 2.2 D3 Drawing with Data - Bar Chart</title>
+
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+
+<body>
+
+	<h1>Drawing with Data - Bar Chart</h1>
+	<h2>Author: Lee Jin Yan</h2>
+
+	<script>
+		// Set height and weight for the bar chart
+		var w=500;
+		var h=200;
+		// Dataset that contain the data for the barchart
+		var dataset=[14,5,26,23,9];
+		var barPadding=5;
+
+		var svg=d3.select("body")
+				  .append("svg")
+				  .attr("width",w)
+				  .attr("height",h);
+
+		svg.selectAll("rect")
+			.data (dataset)
+			.enter()
+			.append("rect")
+			.attr("x",function(d,i){
+				return i*(w/dataset.length);
+			})
+			.attr("y",function(d){
+				return d;
+			})
+			.attr("barPadding",5)
+			.attr("width",w/dataset.length-barPadding)
+			.attr("height",200);
+
+	</script>
+
+	<br>
+	<br>
+	<footer style="color: grey">COS30045 Data Visualisation<br> Joe Bloggs</footer>
+
+</body>
+</html>
