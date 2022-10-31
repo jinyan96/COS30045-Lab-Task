@@ -15,7 +15,7 @@ function init() {
                 .append("svg")
                 .attr("width",w)
                 .attr("height",h)
-                .attr("fill","grey");
+                .attr("fill","#48D1CC");
 
     d3.json("LGA_VIC.json").then(function(json){
 
