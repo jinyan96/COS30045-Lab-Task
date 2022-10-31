@@ -1,28 +1,27 @@
-function init() {
+function init(){
+    
+	var w = 500;
+    var h = 300;
+	var padding=10;
+    var dataset = [
+        {apples: 5, oranges: 10, grapes:22},
+        {apples: 4, oranges: 12, grapes:28},
+        {apples: 2, oranges: 19, grapes:32},
+        {apples: 7, oranges: 23, grapes:35},
+        {apples: 23, oranges: 17, grapes:43}
+    ];
 
-    var w=300;
-    var h=300;
+    var stack = d3.stack()
+                    .keys(["apples","oranges","grapes"])
+                    .order(d3.stackOrderDescending);
 
-    var dataset=[
-                {apples:5, oranges:10, grapes:22},
-                {apples:4, oranges:12, grapes:28},
-                {apples:2, oranges:19, grapes:32},
-                {apples:7, oranges:23, grapes:35},
-                {apples:23, oranges:17, grapes:43}
-                ];
-
-    var stack=d3.stack()
-                .keys(["apples","oranges","grapes"])
-                .order(d3.stackOrderDescending);
-
-    var series=stack(dataset);
-
+    var series = stack(dataset);
     var color = d3.scaleOrdinal(d3.schemeCategory10);
                        
     var svg = d3.select("#chart")
                 .append("svg")
                 .attr("width", w)
-                .attr("height", h);
+                .attr("height", h+20);
 
     var groups = svg.selectAll("g")
                     .data(series)
@@ -44,6 +43,14 @@ function init() {
                     .range([0, w])
                     .paddingInner(0.05);
 
+    var xAxis=d3.axisBottom()
+                    .ticks(5)
+                .scale(xScale);
+
+    var yAxis=d3.axisLeft()
+                    .ticks(8)
+                .scale(yScale);
+
     var rect = groups.selectAll("rect")
                         .data(function(d){
                             return d;
@@ -51,7 +58,7 @@ function init() {
                         .enter()
                         .append("rect")
                         .attr("x", function(d,i){
-                            return xScale(i);
+                            return xScale(i)+20;
                         })
                         .attr("y",function(d, i){
                             return yScale(d[1]);
@@ -60,7 +67,14 @@ function init() {
                             return yScale(d[0]) - yScale(d[1]);
                         })
                         .attr("width", xScale.bandwidth());
-      
-}
 
-window.onload = init;
+    svg.append("g")
+                .attr("transform","translate(-28, "+(h - padding+10) +")")
+                .call(xAxis);
+    svg.append("g")
+                .attr("transform","translate("+(padding+10) +")")
+                .call(yAxis);
+} 
+        
+	
+window.onload= init;
