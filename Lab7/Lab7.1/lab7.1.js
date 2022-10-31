@@ -48,11 +48,11 @@ function lineChart(dataset){
                     .range([h,0]);
 
         var xAxis=d3.axisBottom()
-                    .ticks(5)
+                    .ticks(8)
                     .scale(xScale);
 
         var yAxis=d3.axisLeft()
-                    .ticks(5)
+                    .ticks(10)
                     .scale(yScale);
 
         line=d3.line()
